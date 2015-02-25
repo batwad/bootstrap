@@ -1,7 +1,7 @@
 <div ng-class="{
-    'active': leaving || (active && !entering),
-    'prev': (next || active) && direction=='prev',
-    'next': (next || active) && direction=='next',
-    'right': direction=='prev',
-    'left': direction=='next'
-  }" class="item text-center" ng-transclude></div>
+    'tb-active': leaving || (active && !entering),
+    'tb-prev': (next || active) && direction=='prev',
+    'tb-next': (next || active) && direction=='next',
+    'tb-right': direction=='prev',
+    'tb-left': direction=='next'
+  }" class="tb-item tb-text-center" ng-transclude></div>
