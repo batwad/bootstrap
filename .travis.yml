@@ -10,3 +10,5 @@
 
  script: grunt
  
+ addons:
+  artifacts: true
