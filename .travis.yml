@@ -7,10 +7,14 @@
   - sh -e /etc/init.d/xvfb start
   - npm install --quiet -g grunt-cli karma
   - npm install
+  - "gem install travis-artifacts"
 
+  after_script:
+  - "travis-artifacts upload --path dist"
+  
  script: grunt
    
-deploy:
+ deploy:
   provider: s3
   access_key_id: "AKIAJP647EKD6LJTOJIA"
   secret_access_key: "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"
