@@ -217,7 +217,7 @@ describe('tabs', function() {
     }));
 
     function titles() {
-      return elm.find('ul.nav-tabs li');
+      return elm.find('ul.tb-nav-tabs li');
     }
     function contents() {
       return elm.find('div.tb-tab-content div.tb-tab-pane');
@@ -350,7 +350,7 @@ describe('tabs', function() {
 
     it('should preserve correct ordering', function() {
       function titles() {
-        return elm.find('ul.nav-tabs li a');
+        return elm.find('ul.tb-nav-tabs li a');
       }
       scope.$apply();
       expect(titles().length).toBe(9);
@@ -623,7 +623,7 @@ describe('tabs', function() {
     }));
 
     it('to stack tabs', function() {
-      expect(elm.find('ul.nav-tabs')).toHaveClass('tb-nav-stacked');
+      expect(elm.find('ul.tb-nav-tabs')).toHaveClass('tb-nav-stacked');
     });
   });
 
@@ -636,7 +636,7 @@ describe('tabs', function() {
       }));
 
       it('to justify tabs', function() {
-          expect(elm.find('ul.nav-tabs')).toHaveClass('tb-nav-justified');
+          expect(elm.find('ul.tb-nav-tabs')).toHaveClass('tb-nav-justified');
       });
   });
 
