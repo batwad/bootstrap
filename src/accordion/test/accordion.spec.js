@@ -109,7 +109,7 @@ describe('accordion', function () {
       return groups.eq(index).find('a').eq(0);
     };
     var findGroupBody = function (index) {
-      return groups.eq(index).find('.panel-collapse').eq(0);
+      return groups.eq(index).find('.tb-panel-collapse').eq(0);
     };
 
 
@@ -132,7 +132,7 @@ describe('accordion', function () {
         element = angular.element(tpl);
         $compile(element)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
       afterEach(function() {
         element.remove();
@@ -185,14 +185,14 @@ describe('accordion', function () {
       });
 
       it('should have no panels initially', function () {
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toEqual(0);
       });
 
       it('should have a panel for each model item', function() {
         scope.groups = model;
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toEqual(2);
         expect(findGroupLink(0).text()).toEqual('title 1');
         expect(findGroupBody(0).text().trim()).toEqual('Content 1');
@@ -203,12 +203,12 @@ describe('accordion', function () {
       it('should react properly on removing items from the model', function () {
         scope.groups = model;
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toEqual(2);
 
         scope.groups.splice(0,1);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toEqual(1);
       });
     });
@@ -224,7 +224,7 @@ describe('accordion', function () {
         scope.open = { first: false, second: true };
         $compile(element)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
 
       it('should open the panel with isOpen set to true', function () {
@@ -257,7 +257,7 @@ describe('accordion', function () {
         angular.element(document.body).append(element);
         $compile(element)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
 
       afterEach(function() {
@@ -284,7 +284,7 @@ describe('accordion', function () {
         $compile(element)(scope);
         scope.$digest();
 
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
 
       it('should have visible group body when the group with isOpen set to true', function () {
@@ -316,7 +316,7 @@ describe('accordion', function () {
         scope.disabled = true;
         $compile(element)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         groupBody = findGroupBody(0);
       });
 
@@ -352,7 +352,7 @@ describe('accordion', function () {
           '</accordion>';
         element = $compile(tpl)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
       it('transcludes the <accordion-heading> content into the heading link', function() {
         expect(findGroupLink(0).text()).toBe('Heading Element 123 ');
@@ -374,7 +374,7 @@ describe('accordion', function () {
           '</accordion>';
         element = $compile(tpl)(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
       });
       it('transcludes the <accordion-heading> content into the heading link', function() {
         expect(findGroupLink(0).text()).toBe('Heading Element 123 ');
@@ -389,7 +389,7 @@ describe('accordion', function () {
       it('should clone the accordion-heading for each group', function() {
         element = $compile('<accordion><accordion-group ng-repeat="x in [1,2,3]"><accordion-heading>{{x}}</accordion-heading></accordion-group></accordion>')(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toBe(3);
         expect(findGroupLink(0).text()).toBe('1');
         expect(findGroupLink(1).text()).toBe('2');
@@ -402,7 +402,7 @@ describe('accordion', function () {
       it('should clone the accordion-heading for each group', function() {
         element = $compile('<accordion><accordion-group ng-repeat="x in [1,2,3]"><div accordion-heading>{{x}}</div></accordion-group></accordion>')(scope);
         scope.$digest();
-        groups = element.find('.panel');
+        groups = element.find('.tb-panel');
         expect(groups.length).toBe(3);
         expect(findGroupLink(0).text()).toBe('1');
         expect(findGroupLink(1).text()).toBe('2');
