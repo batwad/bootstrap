@@ -9,7 +9,7 @@
   - npm install
   - "gem install travis-artifacts"
 
-  after_script:
+ after_script:
   - "travis-artifacts upload --path dist"
   
  script: grunt
