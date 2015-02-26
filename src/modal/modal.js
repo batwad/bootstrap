@@ -134,7 +134,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.transition'])
   .factory('$modalStack', ['$transition', '$timeout', '$document', '$compile', '$rootScope', '$$stackedMap',
     function ($transition, $timeout, $document, $compile, $rootScope, $$stackedMap) {
 
-      var OPENED_MODAL_CLASS = 'modal-open';
+      var OPENED_MODAL_CLASS = 'tb-modal-open';
 
       var backdropDomEl, backdropScope;
       var openedWindows = $$stackedMap.createNew();
