@@ -21,9 +21,9 @@ describe('typeaheadPopup - result rendering', function () {
 
     var liElems = el.find('li');
     expect(liElems.length).toEqual(3);
-    expect(liElems.eq(0)).not.toHaveClass('active');
-    expect(liElems.eq(1)).toHaveClass('active');
-    expect(liElems.eq(2)).not.toHaveClass('active');
+    expect(liElems.eq(0)).not.toHaveClass('tb-active');
+    expect(liElems.eq(1)).toHaveClass('tb-active');
+    expect(liElems.eq(2)).not.toHaveClass('tb-active');
   });
 
   it('should change active item on mouseenter', function () {
@@ -35,13 +35,13 @@ describe('typeaheadPopup - result rendering', function () {
     $rootScope.$digest();
 
     var liElems = el.find('li');
-    expect(liElems.eq(1)).toHaveClass('active');
-    expect(liElems.eq(2)).not.toHaveClass('active');
+    expect(liElems.eq(1)).toHaveClass('tb-active');
+    expect(liElems.eq(2)).not.toHaveClass('tb-active');
 
     liElems.eq(2).trigger('mouseenter');
 
-    expect(liElems.eq(1)).not.toHaveClass('active');
-    expect(liElems.eq(2)).toHaveClass('active');
+    expect(liElems.eq(1)).not.toHaveClass('tb-active');
+    expect(liElems.eq(2)).toHaveClass('tb-active');
   });
 
   it('should select an item on mouse click', function () {

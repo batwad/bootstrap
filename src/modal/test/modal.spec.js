@@ -65,7 +65,7 @@ describe('$modal', function () {
 
       toHaveModalOpenWithContent: function(content, selector) {
 
-        var contentToCompare, modalDomEls = this.actual.find('body > div.modal > div.modal-dialog > div.modal-content');
+        var contentToCompare, modalDomEls = this.actual.find('body > div.tb-modal > div.tb-modal-dialog > div.tb-modal-content');
 
         this.message = function() {
           return '"Expected "' + angular.mock.dump(modalDomEls) + '" to be open with "' + content + '".';
@@ -77,13 +77,13 @@ describe('$modal', function () {
 
       toHaveModalsOpen: function(noOfModals) {
 
-        var modalDomEls = this.actual.find('body > div.modal');
+        var modalDomEls = this.actual.find('body > div.tb-modal');
         return modalDomEls.length === noOfModals;
       },
 
       toHaveBackdrop: function() {
 
-        var backdropDomEls = this.actual.find('body > div.modal-backdrop');
+        var backdropDomEls = this.actual.find('body > div.tb-modal-backdrop');
         this.message = function() {
           return 'Expected "' + angular.mock.dump(backdropDomEls) + '" to be a backdrop element".';
         };
@@ -95,8 +95,8 @@ describe('$modal', function () {
 
   afterEach(function () {
     var body = $document.find('body');
-    body.find('div.modal').remove();
-    body.find('div.modal-backdrop').remove();
+    body.find('div.tb-modal').remove();
+    body.find('div.tb-modal-backdrop').remove();
     body.removeClass('tb-modal-open');
   });
 
@@ -200,7 +200,7 @@ describe('$modal', function () {
       var modal = open({template: '<div>Content</div>'});
       expect($document).toHaveModalsOpen(1);
 
-      $document.find('body > div.modal').click();
+      $document.find('body > div.tb-modal').click();
       $timeout.flush();
       $rootScope.$digest();
 
@@ -470,7 +470,7 @@ describe('$modal', function () {
           backdrop: 'static'
         });
 
-        $document.find('body > div.modal-backdrop').click();
+        $document.find('body > div.tb-modal-backdrop').click();
         $rootScope.$digest();
 
         expect($document).toHaveModalOpenWithContent('Static backdrop', 'div');
@@ -574,7 +574,7 @@ describe('$modal', function () {
       var modal1 = open({template: '<div>Modal1</div>'});
       var modal2 = open({template: '<div>Modal2</div>', backdrop: false});
 
-      $document.find('body > div.modal-backdrop').click();
+      $document.find('body > div.tb-modal-backdrop').click();
       $rootScope.$digest();
 
       expect($document).toHaveModalsOpen(2);

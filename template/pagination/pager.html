@@ -1,4 +1,4 @@
 <ul class="tb-pager">
-  <li ng-class="{'tb-disabled': noPrevious(), previous: align}"><a href ng-click="selectPage(page - 1)">{{getText('previous')}}</a></li>
-  <li ng-class="{'tb-disabled': noNext(), next: align}"><a href ng-click="selectPage(page + 1)">{{getText('next')}}</a></li>
+    <li ng-class="{'tb-disabled': noPrevious(), 'tb-previous': align}"><a href ng-click="selectPage(page - 1)">{{getText('previous')}}</a></li>
+    <li ng-class="{'tb-disabled': noNext(), 'tb-next': align}"><a href ng-click="selectPage(page + 1)">{{getText('next')}}</a></li>
 </ul>

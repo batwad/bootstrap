@@ -147,7 +147,7 @@ describe('typeahead tests', function () {
       expect(inputEl.attr('aria-expanded')).toBe('true');
       var activeOptionId = ownsId + '-option-0';
       expect(inputEl.attr('aria-activedescendant')).toBe(activeOptionId);
-      expect(findDropDown(element).find('li.active').attr('id')).toBe(activeOptionId);
+      expect(findDropDown(element).find('li.tb-active').attr('id')).toBe(activeOptionId);
 
       changeInputValueTo(element, '');
       expect(element).toBeClosed();

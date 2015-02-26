@@ -220,7 +220,7 @@ describe('tabs', function() {
       return elm.find('ul.nav-tabs li');
     }
     function contents() {
-      return elm.find('div.tab-content div.tab-pane');
+      return elm.find('div.tb-tab-content div.tb-tab-pane');
     }
 
     function expectTabActive(activeTab) {
@@ -665,7 +665,7 @@ describe('tabs', function() {
     }));
 
     it('should hookup the tab\'s children to the tab with $compile', function() {
-      var tabChild = $('.tab-pane', elm).children().first();
+      var tabChild = $('.tb-tab-pane', elm).children().first();
       expect(tabChild.inheritedData('$tabsetController')).toBeTruthy();
     });
   });
@@ -702,7 +702,7 @@ describe('tabs', function() {
       '</tabset></div>')(scope);
       scope.$apply();
 
-      var contents = elm.find('.tab-pane');
+      var contents = elm.find('.tb-tab-pane');
       expect(contents.eq(0).text().trim()).toEqual('1,2,3,');
       expect(contents.eq(1).text().trim()).toEqual('2,3,4,');
       expect(contents.eq(2).text().trim()).toEqual('3,4,5,');
@@ -775,10 +775,10 @@ describe('tabs', function() {
       var nestedTabset = outsideTabset.find('.tabbable');
 
       expect(elm.find('.tabbable').length).toEqual(4);
-      expect(outsideTabset.find('.tab-pane').eq(0).find('.tab-1').text().trim()).toEqual(scope.tab1Text);
-      expect(nestedTabset.find('.tab-pane').eq(0).text().trim()).toEqual(scope.tab1aText);
-      expect(nestedTabset.find('ul.nav-tabs li').eq(0).text().trim()).toEqual(scope.tab1aHead);
-      expect(nestedTabset.eq(2).find('.tab-pane').eq(0).find('.tab-2aa').text().trim()).toEqual(scope.tab2aaText);
+      expect(outsideTabset.find('.tb-tab-pane').eq(0).find('.tab-1').text().trim()).toEqual(scope.tab1Text);
+      expect(nestedTabset.find('.tb-tab-pane').eq(0).text().trim()).toEqual(scope.tab1aText);
+      expect(nestedTabset.find('ul.tb-nav-tabs li').eq(0).text().trim()).toEqual(scope.tab1aHead);
+      expect(nestedTabset.eq(2).find('.tb-tab-pane').eq(0).find('.tab-2aa').text().trim()).toEqual(scope.tab2aaText);
     }));
 
     it('ng-repeat works with nested tabs', inject(function($compile, $rootScope) {
