@@ -16,8 +16,6 @@
    
  deploy:
   provider: s3
-  access_key_id: "AKIAJP647EKD6LJTOJIA"
-  secret_access_key: "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"
   bucket: "travis-angular"
   skip_cleanup: true
   region: eu-west-1
