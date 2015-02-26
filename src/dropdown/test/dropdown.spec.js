@@ -34,37 +34,37 @@ describe('dropdownToggle', function() {
     });
 
     it('should toggle on `a` click', function() {
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
 
     it('should toggle when an option is clicked', function() {
       $document.find('body').append(element);
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
 
       var optionEl = element.find('ul > li').eq(0).find('a').eq(0);
       optionEl.click();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
       element.remove();
     });
 
     it('should close on document click', function() {
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
       $document.click();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
 
     it('should close on escape key & focus toggle element', function() {
       $document.find('body').append(element);
       clickDropdownToggle();
       triggerKeyDown($document, 27);
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
       expect(isFocused(element.find('a'))).toBe(true);
       element.remove();
     });
@@ -72,42 +72,42 @@ describe('dropdownToggle', function() {
     it('should not close on backspace key', function() {
       clickDropdownToggle();
       triggerKeyDown($document, 8);
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
     });
 
     it('should close on $location change', function() {
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
       $rootScope.$broadcast('$locationChangeSuccess');
       $rootScope.$apply();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
 
     it('should only allow one dropdown to be open at once', function() {
       var elm1 = dropdown();
       var elm2 = dropdown();
-      expect(elm1.hasClass('open')).toBe(false);
-      expect(elm2.hasClass('open')).toBe(false);
+      expect(elm1.hasClass('tb-open')).toBe(false);
+      expect(elm2.hasClass('tb-open')).toBe(false);
 
       clickDropdownToggle( elm1 );
-      expect(elm1.hasClass('open')).toBe(true);
-      expect(elm2.hasClass('open')).toBe(false);
+      expect(elm1.hasClass('tb-open')).toBe(true);
+      expect(elm2.hasClass('tb-open')).toBe(false);
 
       clickDropdownToggle( elm2 );
-      expect(elm1.hasClass('open')).toBe(false);
-      expect(elm2.hasClass('open')).toBe(true);
+      expect(elm1.hasClass('tb-open')).toBe(false);
+      expect(elm2.hasClass('tb-open')).toBe(true);
     });
 
     it('should not toggle if the element has `disabled` class', function() {
       var elm = $compile('<li dropdown><a class="disabled" dropdown-toggle></a><ul><li>Hello</li></ul></li>')($rootScope);
       clickDropdownToggle( elm );
-      expect(elm.hasClass('open')).toBe(false);
+      expect(elm.hasClass('tb-open')).toBe(false);
     });
 
     it('should not toggle if the element is disabled', function() {
       var elm = $compile('<li dropdown><button disabled="disabled" dropdown-toggle></button><ul><li>Hello</li></ul></li>')($rootScope);
       elm.find('button').click();
-      expect(elm.hasClass('open')).toBe(false);
+      expect(elm.hasClass('tb-open')).toBe(false);
     });
 
     it('should not toggle if the element has `ng-disabled` as true', function() {
@@ -115,12 +115,12 @@ describe('dropdownToggle', function() {
       var elm = $compile('<li dropdown><div ng-disabled="isdisabled" dropdown-toggle></div><ul><li>Hello</li></ul></li>')($rootScope);
       $rootScope.$digest();
       elm.find('div').click();
-      expect(elm.hasClass('open')).toBe(false);
+      expect(elm.hasClass('tb-open')).toBe(false);
 
       $rootScope.isdisabled = false;
       $rootScope.$digest();
       elm.find('div').click();
-      expect(elm.hasClass('open')).toBe(true);
+      expect(elm.hasClass('tb-open')).toBe(true);
     });
 
     it('should unbind events on scope destroy', function() {
@@ -130,13 +130,13 @@ describe('dropdownToggle', function() {
 
       var buttonEl = elm.find('button');
       buttonEl.click();
-      expect(elm.hasClass('open')).toBe(true);
+      expect(elm.hasClass('tb-open')).toBe(true);
       buttonEl.click();
-      expect(elm.hasClass('open')).toBe(false);
+      expect(elm.hasClass('tb-open')).toBe(false);
 
       $scope.$destroy();
       buttonEl.click();
-      expect(elm.hasClass('open')).toBe(false);
+      expect(elm.hasClass('tb-open')).toBe(false);
     });
 
     // issue 270
@@ -144,11 +144,11 @@ describe('dropdownToggle', function() {
       var checkboxEl = $compile('<input type="checkbox" ng-click="clicked = true" />')($rootScope);
       $rootScope.$digest();
 
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
       expect($rootScope.clicked).toBeFalsy();
 
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
       expect($rootScope.clicked).toBeFalsy();
 
       checkboxEl.click();
@@ -188,10 +188,10 @@ describe('dropdownToggle', function() {
     it('should close without errors on $location change', function() {
       $document.find('body').append(element);
       clickDropdownToggle();
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
       var optionEl = element.find('ul > li').eq(0).find('a').eq(0);
       optionEl.click();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
   });
 
@@ -203,13 +203,13 @@ describe('dropdownToggle', function() {
     });
 
     it('should be open initially', function() {
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
     });
 
     it('should toggle when `is-open` changes', function() {
       $rootScope.isopen = false;
       $rootScope.$digest();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
   });
 
@@ -221,7 +221,7 @@ describe('dropdownToggle', function() {
     });
 
     it('should be open initially', function() {
-      expect(element.hasClass('open')).toBe(true);
+      expect(element.hasClass('tb-open')).toBe(true);
     });
 
     it('should change `is-open` binding when toggles', function() {
@@ -232,7 +232,7 @@ describe('dropdownToggle', function() {
     it('should toggle when `is-open` changes', function() {
       $rootScope.isopen = false;
       $rootScope.$digest();
-      expect(element.hasClass('open')).toBe(false);
+      expect(element.hasClass('tb-open')).toBe(false);
     });
 
     it('focus toggle element when opening', function() {
