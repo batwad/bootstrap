@@ -9,12 +9,6 @@
   - npm install
 
  script: grunt
- 
- addons:
-  artifacts: true
-  debug: true
-  paths:
-   - dist
    
 deploy:
   provider: s3
@@ -22,4 +16,6 @@ deploy:
   secret_access_key: "h6UMMbbmz3SQelvCFCKXWel/D7F1JlRK6aalfwxW"
   bucket: "travis-angular"
   skip_cleanup: true
-  region: ireland
+  region: eu-west-1
+  edge: true
+  endpoint: "s3-ap-eu-west-1.amazonaws.com"
