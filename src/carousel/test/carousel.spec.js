@@ -164,7 +164,7 @@ describe('carousel', function() {
     });
 
     it('should bind the content to slides', function() {
-      var contents = elm.find('div.item');
+      var contents = elm.find('div.tb-item');
 
       expect(contents.length).toBe(3);
       expect(contents.eq(0).text()).toBe('one');
@@ -220,19 +220,19 @@ describe('carousel', function() {
       scope.$apply('slides[2].active = true');
       testSlideActive(2);
       scope.$apply('slides.splice(0,1)');
-      expect(elm.find('div.item').length).toBe(2);
+      expect(elm.find('div.tb-item').length).toBe(2);
       testSlideActive(1);
       $interval.flush(scope.interval);
       testSlideActive(0);
       scope.$apply('slides.splice(1,1)');
-      expect(elm.find('div.item').length).toBe(1);
+      expect(elm.find('div.tb-item').length).toBe(1);
       testSlideActive(0);
     });
 
     it('should change dom when you reassign ng-repeat slides array', function() {
       scope.slides=[{content:'new1'},{content:'new2'},{content:'new3'}];
       scope.$apply();
-      var contents = elm.find('div.item');
+      var contents = elm.find('div.tb-item');
       expect(contents.length).toBe(3);
       expect(contents.eq(0).text()).toBe('new1');
       expect(contents.eq(1).text()).toBe('new2');

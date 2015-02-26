@@ -743,7 +743,7 @@ describe('timepicker directive', function () {
 
       changeInputValueTo(el, 'pizza');
       expect($rootScope.time).toBe(null);
-      expect(el.parent().hasClass('has-error')).toBe(true);
+      expect(el.parent().hasClass('tb-has-error')).toBe(true);
       expect(element.hasClass('ng-invalid-time')).toBe(true);
 
       changeInputValueTo(el, 8);
@@ -751,7 +751,7 @@ describe('timepicker directive', function () {
       $rootScope.$digest();
       expect(getTimeState()).toEqual(['08', '40', 'PM']);
       expect(getModelState()).toEqual([20, 40]);
-      expect(el.parent().hasClass('has-error')).toBe(false);
+      expect(el.parent().hasClass('tb-has-error')).toBe(false);
       expect(element.hasClass('ng-invalid-time')).toBe(false);
     });
 
@@ -760,13 +760,13 @@ describe('timepicker directive', function () {
 
       changeInputValueTo(el, 'pizza');
       expect($rootScope.time).toBe(null);
-      expect(el.parent().hasClass('has-error')).toBe(true);
+      expect(el.parent().hasClass('tb-has-error')).toBe(true);
       expect(element.hasClass('ng-invalid-time')).toBe(true);
 
       changeInputValueTo(el, 22);
       expect(getTimeState()).toEqual(['02', '22', 'PM']);
       expect(getModelState()).toEqual([14, 22]);
-      expect(el.parent().hasClass('has-error')).toBe(false);
+      expect(el.parent().hasClass('tb-has-error')).toBe(false);
       expect(element.hasClass('ng-invalid-time')).toBe(false);
     });
 
@@ -779,7 +779,7 @@ describe('timepicker directive', function () {
 
       changeInputValueTo(el, '16');
       expect($rootScope.time).toBe(null);
-      expect(el.parent().hasClass('has-error')).toBe(true);
+      expect(el.parent().hasClass('tb-has-error')).toBe(true);
       expect(element.hasClass('ng-invalid-time')).toBe(true);
 
       $rootScope.meridian = false;

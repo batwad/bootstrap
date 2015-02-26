@@ -97,7 +97,7 @@ describe('$modal', function () {
     var body = $document.find('body');
     body.find('div.modal').remove();
     body.find('div.modal-backdrop').remove();
-    body.removeClass('modal-open');
+    body.removeClass('tb-modal-open');
   });
 
   function open(modalOptions) {
@@ -480,18 +480,18 @@ describe('$modal', function () {
       it('should animate backdrop on each modal opening', function () {
 
         var modal = open({ template: '<div>With backdrop</div>' });
-        var backdropEl = $document.find('body > div.modal-backdrop');
-        expect(backdropEl).not.toHaveClass('in');
+        var backdropEl = $document.find('body > div.tb-modal-backdrop');
+        expect(backdropEl).not.toHaveClass('tb-in');
 
         $timeout.flush();
-        expect(backdropEl).toHaveClass('in');
+        expect(backdropEl).toHaveClass('tb-in');
 
         dismiss(modal);
         waitForBackdropAnimation();
 
         modal = open({ template: '<div>With backdrop</div>' });
-        backdropEl = $document.find('body > div.modal-backdrop');
-        expect(backdropEl).not.toHaveClass('in');
+        backdropEl = $document.find('body > div.tb-modal-backdrop');
+        expect(backdropEl).not.toHaveClass('tb-in');
 
       });
 
@@ -503,7 +503,7 @@ describe('$modal', function () {
             backdropClass: 'additional'
           });
 
-          expect($document.find('div.modal-backdrop')).toHaveClass('additional');
+          expect($document.find('div.tb-modal-backdrop')).toHaveClass('additional');
         });
       });
     });
@@ -516,7 +516,7 @@ describe('$modal', function () {
           windowClass: 'additional'
         });
 
-        expect($document.find('div.modal')).toHaveClass('additional');
+        expect($document.find('div.tb-modal')).toHaveClass('additional');
       });
     });
 
@@ -528,7 +528,7 @@ describe('$modal', function () {
           size: 'sm'
         });
 
-        expect($document.find('div.modal-dialog')).toHaveClass('modal-sm');
+        expect($document.find('div.tb-modal-dialog')).toHaveClass('tb-modal-sm');
       });
 
       it('should support creating large modal dialogs', function () {
@@ -537,7 +537,7 @@ describe('$modal', function () {
           size: 'lg'
         });
 
-        expect($document.find('div.modal-dialog')).toHaveClass('modal-lg');
+        expect($document.find('div.tb-modal-dialog')).toHaveClass('tb-modal-lg');
       });
     });
   });
@@ -592,19 +592,19 @@ describe('$modal', function () {
     it('should add "modal-open" class when a modal gets opened', function () {
 
       var body = $document.find('body');
-      expect(body).not.toHaveClass('modal-open');
+      expect(body).not.toHaveClass('tb-modal-open');
 
       var modal1 = open({template: '<div>Content1</div>'});
-      expect(body).toHaveClass('modal-open');
+      expect(body).toHaveClass('tb-modal-open');
 
       var modal2 = open({template: '<div>Content1</div>'});
-      expect(body).toHaveClass('modal-open');
+      expect(body).toHaveClass('tb-modal-open');
 
       dismiss(modal1);
-      expect(body).toHaveClass('modal-open');
+      expect(body).toHaveClass('tb-modal-open');
 
       dismiss(modal2);
-      expect(body).not.toHaveClass('modal-open');
+      expect(body).not.toHaveClass('tb-modal-open');
     });
   });
 });

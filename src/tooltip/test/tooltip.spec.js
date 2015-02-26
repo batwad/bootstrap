@@ -128,7 +128,7 @@ describe('tooltip', function() {
 
     tooltipScope = tt_2.scope().$$childTail;
     expect( tooltipScope.content ).toBe( scope.items[1].tooltip );
-    expect( elm.find( '.tooltip-inner' ).text() ).toBe( scope.items[1].tooltip );
+    expect( elm.find( '.tb-tooltip-inner' ).text() ).toBe( scope.items[1].tooltip );
 
     tt_2.trigger( 'mouseleave' );
 
@@ -356,7 +356,7 @@ describe('tooltip', function() {
     }));
 
     afterEach(function () {
-      $body.find('.tooltip').remove();
+      $body.find('.tb-tooltip').remove();
     });
 
     it( 'should append to the body', inject( function( $compile, $document ) {
@@ -472,7 +472,7 @@ describe( 'tooltipHtmlUnsafe', function() {
 
   it( 'should render html properly', inject( function () {
     elm.trigger( 'mouseenter' );
-    expect( elmBody.find('.tooltip-inner').html() ).toBe( scope.html );
+    expect( elmBody.find('.tb-tooltip-inner').html() ).toBe( scope.html );
   }));
 
   it( 'should show on mouseenter and hide on mouseleave', inject( function () {
@@ -540,7 +540,7 @@ describe( '$tooltipProvider', function() {
     }));
 
     afterEach(function () {
-      $body.find('.tooltip').remove();
+      $body.find('.tb-tooltip').remove();
     });
 
 

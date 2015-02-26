@@ -29,7 +29,7 @@ describe('pager directive', function () {
   }
 
   it('has a "pager" css class', function() {
-    expect(element.hasClass('pager')).toBe(true);
+    expect(element.hasClass('tb-pager')).toBe(true);
   });
 
   it('contains 2 li elements', function() {
@@ -39,21 +39,21 @@ describe('pager directive', function () {
   });
 
   it('aligns previous & next page', function() {
-    expect(getPaginationEl(0)).toHaveClass('previous');
-    expect(getPaginationEl(0)).not.toHaveClass('next');
+    expect(getPaginationEl(0)).toHaveClass('tb-previous');
+    expect(getPaginationEl(0)).not.toHaveClass('tb-next');
 
-    expect(getPaginationEl(-1)).not.toHaveClass('previous');
-    expect(getPaginationEl(-1)).toHaveClass('next');
+    expect(getPaginationEl(-1)).not.toHaveClass('tb-previous');
+    expect(getPaginationEl(-1)).toHaveClass('tb-next');
   });
 
   it('disables the "previous" link if current page is 1', function() {
     updateCurrentPage(1);
-    expect(getPaginationEl(0)).toHaveClass('disabled');
+    expect(getPaginationEl(0)).toHaveClass('tb-disabled');
   });
 
   it('disables the "next" link if current page is num-pages', function() {
     updateCurrentPage(5);
-    expect(getPaginationEl(-1)).toHaveClass('disabled');
+    expect(getPaginationEl(-1)).toHaveClass('tb-disabled');
   });
 
   it('changes currentPage if the "previous" link is clicked', function() {
@@ -115,18 +115,18 @@ describe('pager directive', function () {
 
       expect($rootScope.currentPage).toBe(2);
       expect(getPaginationBarSize()).toBe(2);
-      expect(getPaginationEl(0)).not.toHaveClass('disabled');
-      expect(getPaginationEl(-1)).toHaveClass('disabled');
+      expect(getPaginationEl(0)).not.toHaveClass('tb-disabled');
+      expect(getPaginationEl(-1)).toHaveClass('tb-disabled');
     });
   });
 
   describe('when `page` is not a number', function () {
     it('handles string', function() {
       updateCurrentPage('1');
-      expect(getPaginationEl(0)).toHaveClass('disabled');
+      expect(getPaginationEl(0)).toHaveClass('tb-disabled');
 
       updateCurrentPage('05');
-      expect(getPaginationEl(-1)).toHaveClass('disabled');
+      expect(getPaginationEl(-1)).toHaveClass('tb-disabled');
     });
   });
 
@@ -163,8 +163,8 @@ describe('pager directive', function () {
     });
 
     it('should not align previous & next page link', function () {
-      expect(getPaginationEl(0)).not.toHaveClass('previous');
-      expect(getPaginationEl(-1)).not.toHaveClass('next');
+      expect(getPaginationEl(0)).not.toHaveClass('tb-previous');
+      expect(getPaginationEl(-1)).not.toHaveClass('tb-next');
     });
   });
 
@@ -184,8 +184,8 @@ describe('pager directive', function () {
     });
 
     it('should not align previous & next page link', function () {
-      expect(getPaginationEl(0)).not.toHaveClass('previous');
-      expect(getPaginationEl(-1)).not.toHaveClass('next');
+      expect(getPaginationEl(0)).not.toHaveClass('tb-previous');
+      expect(getPaginationEl(-1)).not.toHaveClass('tb-next');
     });
 
     it('changes "previous" & "next" text from interpolated attributes', function() {

@@ -27,11 +27,11 @@ describe('alert', function () {
   function createAlerts() {
     $compile(element)(scope);
     scope.$digest();
-    return element.find('.alert');
+    return element.find('.tb-alert');
   }
 
   function findCloseButton(index) {
-    return element.find('.close').eq(index);
+    return element.find('.tb-close').eq(index);
   }
 
   function findContent(index) {
@@ -45,19 +45,19 @@ describe('alert', function () {
 
   it('should use correct classes for different alert types', function () {
     var alerts = createAlerts();
-    expect(alerts.eq(0)).toHaveClass('alert-success');
-    expect(alerts.eq(1)).toHaveClass('alert-error');
-    expect(alerts.eq(2)).toHaveClass('alert-warning');
+    expect(alerts.eq(0)).toHaveClass('tb-alert-success');
+    expect(alerts.eq(1)).toHaveClass('tb-alert-error');
+    expect(alerts.eq(2)).toHaveClass('tb-alert-warning');
   });
 
   it('should respect alert type binding', function () {
     var alerts = createAlerts();
-    expect(alerts.eq(0)).toHaveClass('alert-success');
+    expect(alerts.eq(0)).toHaveClass('tb-alert-success');
 
     scope.alerts[0].type = 'error';
     scope.$digest();
 
-    expect(alerts.eq(0)).toHaveClass('alert-error');
+    expect(alerts.eq(0)).toHaveClass('tb-alert-error');
   });
 
   it('should show the alert content', function() {
@@ -73,7 +73,7 @@ describe('alert', function () {
 
     for (var i = 0, n = alerts.length; i < n; i++) {
       expect(findCloseButton(i).css('display')).not.toBe('none');
-      expect(alerts.eq(i)).toHaveClass('alert-dismissable');
+      expect(alerts.eq(i)).toHaveClass('tb-alert-dismissable');
     }
   });
 
@@ -95,14 +95,14 @@ describe('alert', function () {
     element = $compile('<alert>No close</alert>')(scope);
     scope.$digest();
     expect(findCloseButton(0)).toBeHidden();
-    expect(element).not.toHaveClass('alert-dismissable');
+    expect(element).not.toHaveClass('tb-alert-dismissable');
   });
 
   it('should be possible to add additional classes for alert', function () {
-    var element = $compile('<alert class="alert-block" type="info">Default alert!</alert>')(scope);
+    var element = $compile('<alert class="tb-alert-block" type="info">Default alert!</alert>')(scope);
     scope.$digest();
-    expect(element).toHaveClass('alert-block');
-    expect(element).toHaveClass('alert-info');
+    expect(element).toHaveClass('tb-alert-block');
+    expect(element).toHaveClass('tb-alert-info');
   });
 
 });

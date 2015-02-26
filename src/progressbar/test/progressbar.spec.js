@@ -10,14 +10,14 @@ describe('progressbar directive', function () {
     $rootScope.$digest();
   }));
 
-  var BAR_CLASS = 'progress-bar';
+  var BAR_CLASS = 'tb-progress-bar';
 
   function getBar(i) {
     return element.children().eq(i);
   }
 
   it('has a "progress" css class', function() {
-    expect(element).toHaveClass('progress');
+    expect(element).toHaveClass('tb-progress');
   });
 
   it('contains one child element with "bar" css class', function() {
@@ -43,11 +43,11 @@ describe('progressbar directive', function () {
   });
 
   it('it should be possible to add additional classes', function () {
-    element = $compile('<progress class="progress-striped active" max="200"><bar class="pizza"></bar></progress>')($rootScope);
+    element = $compile('<progress class="tb-progress-striped tb-active" max="200"><bar class="pizza"></bar></progress>')($rootScope);
     $rootScope.$digest();
 
-    expect(element).toHaveClass('progress-striped');
-    expect(element).toHaveClass('active');
+    expect(element).toHaveClass('tb-progress-striped');
+    expect(element).toHaveClass('tb-active');
 
     expect(getBar(0)).toHaveClass('pizza');
   });

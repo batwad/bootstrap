@@ -48,7 +48,7 @@ describe('typeahead tests', function () {
   };
 
   var findDropDown = function (element) {
-    return element.find('ul.dropdown-menu');
+    return element.find('ul.tb-dropdown-menu');
   };
 
   var findMatches = function (element) {
@@ -84,7 +84,7 @@ describe('typeahead tests', function () {
         return (typeaheadEl.length === 1 &&
                 typeaheadEl.hasClass('ng-hide') === false &&
                 liEls.length === noOfMatches &&
-                (activeIdx === -1 ? !$(liEls).hasClass('active') : $(liEls[activeIdx]).hasClass('active'))
+                (activeIdx === -1 ? !$(liEls).hasClass('tb-active') : $(liEls[activeIdx]).hasClass('tb-active'))
                );
       }
     });

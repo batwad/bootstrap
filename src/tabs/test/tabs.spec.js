@@ -3,10 +3,10 @@ describe('tabs', function() {
 
   var elm, scope;
   function titles() {
-    return elm.find('ul.nav-tabs li');
+    return elm.find('ul.tb-nav-tabs li');
   }
   function contents() {
-    return elm.find('div.tab-content div.tab-pane');
+    return elm.find('div.tb-tab-content div.tb-tab-pane');
   }
 
   function expectTitles(titlesArray) {
@@ -67,17 +67,17 @@ describe('tabs', function() {
 
     it('should bind tabs content and set first tab active', function() {
       expectContents(['first content is 1', 'second content is 2']);
-      expect(titles().eq(0)).toHaveClass('active');
-      expect(titles().eq(1)).not.toHaveClass('active');
+      expect(titles().eq(0)).toHaveClass('tb-active');
+      expect(titles().eq(1)).not.toHaveClass('tb-active');
       expect(scope.actives.one).toBe(true);
       expect(scope.actives.two).toBeFalsy();
     });
 
     it('should change active on click', function() {
       titles().eq(1).find('a').click();
-      expect(contents().eq(1)).toHaveClass('active');
-      expect(titles().eq(0)).not.toHaveClass('active');
-      expect(titles().eq(1)).toHaveClass('active');
+      expect(contents().eq(1)).toHaveClass('tb-active');
+      expect(titles().eq(0)).not.toHaveClass('tb-active');
+      expect(titles().eq(1)).toHaveClass('tb-active');
       expect(scope.actives.one).toBe(false);
       expect(scope.actives.two).toBe(true);
     });
@@ -134,11 +134,11 @@ describe('tabs', function() {
           expect(tab.active).toBe(true);
           //It should only call select ONCE for each select
           expect(tab.select).toHaveBeenCalled();
-          expect(_titles.eq(i)).toHaveClass('active');
-          expect(contents().eq(i)).toHaveClass('active');
+          expect(_titles.eq(i)).toHaveClass('tb-active');
+          expect(contents().eq(i)).toHaveClass('tb-active');
         } else {
           expect(tab.active).toBe(false);
-          expect(_titles.eq(i)).not.toHaveClass('active');
+          expect(_titles.eq(i)).not.toHaveClass('tb-active');
         }
       });
     }
@@ -230,12 +230,12 @@ describe('tabs', function() {
           expect(tab.active).toBe(true);
           //It should only call select ONCE for each select
           expect(tab.select).toHaveBeenCalled();
-          expect(_titles.eq(i)).toHaveClass('active');
+          expect(_titles.eq(i)).toHaveClass('tb-active');
           expect(contents().eq(i).text().trim()).toBe('content ' + i);
-          expect(contents().eq(i)).toHaveClass('active');
+          expect(contents().eq(i)).toHaveClass('tb-active');
         } else {
           expect(tab.active).toBe(false);
-          expect(_titles.eq(i)).not.toHaveClass('active');
+          expect(_titles.eq(i)).not.toHaveClass('tb-active');
         }
       });
     }
@@ -487,8 +487,8 @@ describe('tabs', function() {
 
       // Select last tab
       titles().find('a').eq(3).click();
-      expect(contents().eq(3)).toHaveClass('active');
-      expect(titles().eq(3)).toHaveClass('active');
+      expect(contents().eq(3)).toHaveClass('tb-active');
+      expect(titles().eq(3)).toHaveClass('tb-active');
 
       // Remove last tab
       scope.$apply('list = [1,2]');
@@ -496,13 +496,13 @@ describe('tabs', function() {
       expectContents(['Hello', 'content 1', 'content 2']);
 
       // "tab 2" is now selected
-      expect(titles().eq(2)).toHaveClass('active');
-      expect(contents().eq(2)).toHaveClass('active');
+      expect(titles().eq(2)).toHaveClass('tb-active');
+      expect(contents().eq(2)).toHaveClass('tb-active');
 
       // Select 2nd tab ("tab 1")
       titles().find('a').eq(1).click();
-      expect(titles().eq(1)).toHaveClass('active');
-      expect(contents().eq(1)).toHaveClass('active');
+      expect(titles().eq(1)).toHaveClass('tb-active');
+      expect(contents().eq(1)).toHaveClass('tb-active');
 
       // Remove 2nd tab
       scope.$apply('list = [2]');
@@ -510,8 +510,8 @@ describe('tabs', function() {
       expectContents(['Hello', 'content 2']);
 
       // New 2nd tab is now selected
-      expect(titles().eq(1)).toHaveClass('active');
-      expect(contents().eq(1)).toHaveClass('active');
+      expect(titles().eq(1)).toHaveClass('tb-active');
+      expect(contents().eq(1)).toHaveClass('tb-active');
     }));
 
     it('should not select tabs when being destroyed', inject(function($controller, $compile, $rootScope){
@@ -585,12 +585,12 @@ describe('tabs', function() {
         if (activeTab === tab) {
           expect(tab.active).toBe(true);
           expect(tab.select.callCount).toBe( (tab.disabled) ? 0 : 1 );
-          expect(_titles.eq(i)).toHaveClass('active');
+          expect(_titles.eq(i)).toHaveClass('tb-active');
           expect(contents().eq(i).text().trim()).toBe('content ' + i);
-          expect(contents().eq(i)).toHaveClass('active');
+          expect(contents().eq(i)).toHaveClass('tb-active');
         } else {
           expect(tab.active).toBe(false);
-          expect(_titles.eq(i)).not.toHaveClass('active');
+          expect(_titles.eq(i)).not.toHaveClass('tb-active');
         }
       });
     }
@@ -604,13 +604,13 @@ describe('tabs', function() {
     });
 
     it('should toggle between states', function() {
-      expect(titles().eq(3)).toHaveClass('disabled');
+      expect(titles().eq(3)).toHaveClass('tb-disabled');
       scope.$apply('tabs[3].disabled = false');
-      expect(titles().eq(3)).not.toHaveClass('disabled');
+      expect(titles().eq(3)).not.toHaveClass('tb-disabled');
 
-      expect(titles().eq(2)).not.toHaveClass('disabled');
+      expect(titles().eq(2)).not.toHaveClass('tb-disabled');
       scope.$apply('tabs[2].disabled = true');
-      expect(titles().eq(2)).toHaveClass('disabled');
+      expect(titles().eq(2)).toHaveClass('tb-disabled');
     });
   });
 
@@ -623,7 +623,7 @@ describe('tabs', function() {
     }));
 
     it('to stack tabs', function() {
-      expect(elm.find('ul.nav-tabs')).toHaveClass('nav-stacked');
+      expect(elm.find('ul.nav-tabs')).toHaveClass('tb-nav-stacked');
     });
   });
 
@@ -636,7 +636,7 @@ describe('tabs', function() {
       }));
 
       it('to justify tabs', function() {
-          expect(elm.find('ul.nav-tabs')).toHaveClass('nav-justified');
+          expect(elm.find('ul.nav-tabs')).toHaveClass('tb-nav-justified');
       });
   });
 
@@ -650,8 +650,8 @@ describe('tabs', function() {
     }));
 
     it('to show pills', function() {
-      expect(elm.find('ul')).toHaveClass('nav-pills');
-      expect(elm.find('ul')).not.toHaveClass('nav-tabs');
+      expect(elm.find('ul')).toHaveClass('tb-nav-pills');
+      expect(elm.find('ul')).not.toHaveClass('tb-nav-tabs');
     });
   });
 

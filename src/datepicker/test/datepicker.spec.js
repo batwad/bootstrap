@@ -78,7 +78,7 @@ describe('datepicker directive', function () {
   function expectSelectedElement( index ) {
     var buttons = getAllOptionsEl();
     angular.forEach( buttons, function( button, idx ) {
-      expect(angular.element(button).hasClass('btn-info')).toBe( idx === index );
+      expect(angular.element(button).hasClass('tb-btn-info')).toBe( idx === index );
     });
   }
 
@@ -165,7 +165,7 @@ describe('datepicker directive', function () {
     it('`disables` visible dates from other months', function() {
       var buttons = getAllOptionsEl();
       angular.forEach(buttons, function( button, index ) {
-        expect(angular.element(button).find('span').hasClass('text-muted')).toBe( index < 3 || index > 32 );
+        expect(angular.element(button).find('span').hasClass('tb-text-muted')).toBe( index < 3 || index > 32 );
       });
     });
 
@@ -455,7 +455,7 @@ describe('datepicker directive', function () {
 
     describe('keyboard navigation', function() {
       function getActiveLabel() {
-        return element.find('.active').eq(0).text();
+        return element.find('.tb-active').eq(0).text();
       }
 
       describe('day mode', function() {
@@ -672,7 +672,7 @@ describe('datepicker directive', function () {
       describe('`aria-activedescendant`', function() {
         function checkActivedescendant() {
           var activeId = element.find('table').attr('aria-activedescendant');
-          expect(element.find('#' + activeId + ' > button')).toHaveClass('active');
+          expect(element.find('#' + activeId + ' > button')).toHaveClass('tb-active');
         }
 
         it('updates correctly', function() {
@@ -1544,7 +1544,7 @@ describe('datepicker directive', function () {
       });
 
       afterEach(function () {
-        $document.find('body').find('.dropdown-menu').remove();
+        $document.find('body').find('.tb-dropdown-menu').remove();
       });
 
       it('should append to the body', function() {
