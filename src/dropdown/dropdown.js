@@ -1,7 +1,7 @@
 angular.module('ui.bootstrap.dropdown', [])
 
 .constant('dropdownConfig', {
-  openClass: 'open'
+  openClass: 'tb-open'
 })
 
 .service('dropdownService', ['$document', function($document) {

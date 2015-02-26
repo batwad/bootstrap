@@ -30,14 +30,14 @@ angular.module('ui.bootstrap.collapse', ['ui.bootstrap.transition'])
             initialAnimSkip = false;
             expandDone();
           } else {
-            element.removeClass('collapse').addClass('collapsing');
+            element.removeClass('tb-collapse').addClass('tb-collapsing');
             doTransition({ height: element[0].scrollHeight + 'px' }).then(expandDone);
           }
         }
 
         function expandDone() {
-          element.removeClass('collapsing');
-          element.addClass('collapse in');
+          element.removeClass('tb-collapsing');
+          element.addClass('tb-collapse tb-in');
           element.css({height: 'auto'});
         }
 
@@ -52,15 +52,15 @@ angular.module('ui.bootstrap.collapse', ['ui.bootstrap.transition'])
             //trigger reflow so a browser realizes that height was updated from auto to a specific value
             var x = element[0].offsetWidth;
 
-            element.removeClass('collapse in').addClass('collapsing');
+            element.removeClass('tb-collapse tb-in').addClass('tb-collapsing');
 
             doTransition({ height: 0 }).then(collapseDone);
           }
         }
 
         function collapseDone() {
-          element.removeClass('collapsing');
-          element.addClass('collapse');
+          element.removeClass('tb-collapsing');
+          element.addClass('tb-collapse');
         }
 
         scope.$watch(attrs.collapse, function (shouldCollapse) {
