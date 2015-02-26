@@ -12,3 +12,6 @@
  
  addons:
   artifacts: true
+  debug: true
+  paths:
+   - dist
